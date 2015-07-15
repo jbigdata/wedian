@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
      <title>${systemName} - ${systemDescription}</title>
-[#include "/include/header.ftl" /]
+[#include "/include/header.ftl"  /]
 <!-- Home Page
 ==========================================-->
 <div id="tf-home" class="text-center">
@@ -69,9 +69,9 @@
                     <div class="thumbnail">
                         <img src="${base}/static/assets/img/team/01.jpg" alt="..." class="img-circle team-img">
                         <div class="caption">
-                            <h3>Jenn Gwapa</h3>
-                            <p>CEO / Founder</p>
-                            <p>Do not seek to change what has come before. Seek to create that which has not.</p>
+                            <h3>成员A</h3>
+                            <p>JAVA</p>
+                            <p>擅长JAVA互联网应用开发</p>
                         </div>
                     </div>
                 </div>
@@ -80,9 +80,9 @@
                     <div class="thumbnail">
                         <img src="${base}/static/assets/img/team/02.jpg" alt="..." class="img-circle team-img">
                         <div class="caption">
-                            <h3>Jenn Gwapa</h3>
-                            <p>CEO / Founder</p>
-                            <p>Do not seek to change what has come before. Seek to create that which has not.</p>
+                            <h3>成员B</h3>
+                            <p>UI设计</p>
+                            <p>擅长前端UI设计</p>
                         </div>
                     </div>
                 </div>
@@ -91,9 +91,9 @@
                     <div class="thumbnail">
                         <img src="${base}/static/assets/img/team/03.jpg" alt="..." class="img-circle team-img">
                         <div class="caption">
-                            <h3>Jenn Gwapa</h3>
-                            <p>CEO / Founder</p>
-                            <p>Do not seek to change what has come before. Seek to create that which has not.</p>
+                            <h3>成员C</h3>
+                            <p>C++</p>
+                            <p>擅长C++</p>
                         </div>
                     </div>
                 </div>
@@ -102,56 +102,15 @@
                     <div class="thumbnail">
                         <img src="${base}/static/assets/img/team/04.jpg" alt="..." class="img-circle team-img">
                         <div class="caption">
-                            <h3>Jenn Gwapa</h3>
-                            <p>CEO / Founder</p>
-                            <p>Do not seek to change what has come before. Seek to create that which has not.</p>
+                            <h3>成员D</h3>
+                            <p>大数据
+                            </p>
+                            <p>擅长大数据架构</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="item">
-                    <div class="thumbnail">
-                        <img src="${base}/static/assets/img/team/04.jpg" alt="..." class="img-circle team-img">
-                        <div class="caption">
-                            <h3>Jenn Gwapa</h3>
-                            <p>CEO / Founder</p>
-                            <p>Do not seek to change what has come before. Seek to create that which has not.</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="item">
-                    <div class="thumbnail">
-                        <img src="${base}/static/assets/img/team/01.jpg" alt="..." class="img-circle team-img">
-                        <div class="caption">
-                            <h3>Jenn Gwapa</h3>
-                            <p>CEO / Founder</p>
-                            <p>Do not seek to change what has come before. Seek to create that which has not.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="thumbnail">
-                        <img src="${base}/static/assets/img/team/02.jpg" alt="..." class="img-circle team-img">
-                        <div class="caption">
-                            <h3>Jenn Gwapa</h3>
-                            <p>CEO / Founder</p>
-                            <p>Do not seek to change what has come before. Seek to create that which has not.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="thumbnail">
-                        <img src="${base}/static/assets/img/team/03.jpg" alt="..." class="img-circle team-img">
-                        <div class="caption">
-                            <h3>Jenn Gwapa</h3>
-                            <p>CEO / Founder</p>
-                            <p>Do not seek to change what has come before. Seek to create that which has not.</p>
-                        </div>
-                    </div>
-                </div>
             </div>
 
         </div>
@@ -163,37 +122,37 @@
 <div id="tf-services" class="text-center">
     <div class="container">
         <div class="section-title center">
-            <h2>Take a look at <strong>our services</strong></h2>
+            <h2>我们的服务</h2>
             <div class="line">
                 <hr>
             </div>
             <div class="clearfix"></div>
-            <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>
+            <small><em></em></small>
         </div>
         <div class="space"></div>
         <div class="row">
             <div class="col-md-3 col-sm-6 service">
                 <i class="fa fa-desktop"></i>
                 <h4><strong>Web设计</strong></h4>
-                <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                <p>力求简洁明了是用户界面设计的重要原则。</p>
             </div>
 
             <div class="col-md-3 col-sm-6 service">
                 <i class="fa fa-mobile"></i>
                 <h4><strong>移动端设计</strong></h4>
-                <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                <p>移动端设计</p>
             </div>
 
             <div class="col-md-3 col-sm-6 service">
                 <i class="fa fa-camera"></i>
-                <h4><strong>图形处理</strong></h4>
-                <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                <h4><strong>业务定制</strong></h4>
+                <p>个性化业务定制开发</p>
             </div>
 
             <div class="col-md-3 col-sm-6 service">
                 <i class="fa fa-bullhorn"></i>
-                <h4><strong>市场营销</strong></h4>
-                <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                <h4><strong>一站式服务</strong></h4>
+                <p>从开发到运营，一直站服务</p>
             </div>
         </div>
     </div>
@@ -206,7 +165,7 @@
         <div class="container">
 
             <div class="section-title center">
-                <h2>我们的 <strong>客户</strong></h2>
+                <h2>我们的<strong>客户</strong></h2>
                 <div class="line">
                     <hr>
                 </div>
@@ -244,12 +203,12 @@
 <div id="tf-works">
     <div class="container"> <!-- Container -->
         <div class="section-title text-center center">
-            <h2> 看一看我们的 <strong>服务</strong></h2>
+            <h2>我们的成果</h2>
             <div class="line">
                 <hr>
             </div>
-            <div class="clearfix"></div>
-            <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>
+            [#--<div class="clearfix"></div>--]
+            [#--<small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>--]
         </div>
         <div class="space"></div>
 
@@ -263,7 +222,8 @@
                         <li><a href="#" data-filter=".web">WEB设计</a></li>
                         <li><a href="#" data-filter=".photography">图形处理</a></li>
                         <li><a href="#" data-filter=".app" >移动端设计</a></li>
-                        <li><a href="#" data-filter=".branding" >Branding</a></li>
+                        <li><a href="#" data-filter=".branding" >个性设计
+                        </a></li>
                     </ol>
                 </li>
             </ul>
@@ -374,7 +334,7 @@
                         <a href="#">
                             <div class="hover-text">
                                 <h4>Logo Design</h4>
-                                <small>Branding</small>
+                                <small>业务平台</small>
                                 <div class="clearfix"></div>
                                 <i class="fa fa-plus"></i>
                             </div>
@@ -406,36 +366,36 @@
 
 <!-- Testimonials Section
 ==========================================-->
-<div id="tf-testimonials" class="text-center">
-    <div class="overlay">
-        <div class="container">
-            <div class="section-title center">
-                <h2><strong>Our clients’</strong> testimonials</h2>
-                <div class="line">
-                    <hr>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div id="testimonial" class="owl-carousel owl-theme">
-                        <div class="item">
-                            <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>
-                            <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>
-                        </div>
+[#--<div id="tf-testimonials" class="text-center">--]
+    [#--<div class="overlay">--]
+        [#--<div class="container">--]
+            [#--<div class="section-title center">--]
+                [#--<h2><strong>Our clients’</strong> testimonials</h2>--]
+                [#--<div class="line">--]
+                    [#--<hr>--]
+                [#--</div>--]
+            [#--</div>--]
+            [#--<div class="row">--]
+                [#--<div class="col-md-8 col-md-offset-2">--]
+                    [#--<div id="testimonial" class="owl-carousel owl-theme">--]
+                        [#--<div class="item">--]
+                            [#--<h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>--]
+                            [#--<p><strong>Dean Martin</strong>, CEO Acme Inc.</p>--]
+                        [#--</div>--]
 
-                        <div class="item">
-                            <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>
-                            <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>
-                        </div>
+                        [#--<div class="item">--]
+                            [#--<h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>--]
+                            [#--<p><strong>Dean Martin</strong>, CEO Acme Inc.</p>--]
+                        [#--</div>--]
 
-                        <div class="item">
-                            <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>
-                            <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                        [#--<div class="item">--]
+                            [#--<h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>--]
+                            [#--<p><strong>Dean Martin</strong>, CEO Acme Inc.</p>--]
+                        [#--</div>--]
+                    [#--</div>--]
+                [#--</div>--]
+            [#--</div>--]
+        [#--</div>--]
+    [#--</div>--]
+[#--</div>--]
 [#include "/include/footer.ftl" /]
