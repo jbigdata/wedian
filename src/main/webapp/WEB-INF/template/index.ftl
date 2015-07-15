@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
      <title>${systemName} - ${systemDescription}</title>
-[#include "/include/header.ftl" parse=false /]
+[#include "/include/header.ftl" /]
 <!-- Home Page
 ==========================================-->
 <div id="tf-home" class="text-center">
