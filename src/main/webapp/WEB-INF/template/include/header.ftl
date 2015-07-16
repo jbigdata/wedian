@@ -68,11 +68,11 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="${base}/index.html" class="page-scroll">首页</a></li>
-                    [@navigation_list]
-                    [#list navigations as navigation]
+                    <@navigation_list>
+                    <#list navigations as navigation>
                     <li><a href="" target="_self">${navigation.name}</a></li>
-                    [/#list]
-                    [/@navigation_list]
+                    </#list>
+                    </@navigation_list>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
