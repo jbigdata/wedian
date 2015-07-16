@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="${base}/static/assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="${base}/static/assets/css/style.css">
     <script type="text/javascript" src="${base}/static/assets/js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="${base}/static/assets/js/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${base}/static/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="${base}/static/assets/js/bootstrap3-validation.js"></script>
     <style type="text/css">
         html, body {
@@ -100,11 +100,11 @@
     <script type="application/javascript">
         $(function () {
             //1. 简单写法：
-            $("#form1").validation({icon: true});
+            $("#login-form").validation({icon: true});
             //.注册
-            $("#submit1").on('click', function (event) {
+            $("#login-submit").on('click', function (event) {
                 //第一种提示写法
-                if ($("#form1").valid(this, '内容出错') == false) {
+                if ($("#login-form").valid(this, '') == false) {
                     return false;
                 }
 
@@ -150,13 +150,13 @@
         </div>
         <div class="login-content ">
             <div class="form">
-                <form action="${base}/a/login" id="form1" method="post" role="form">
+                <form action="${base}/a/login" id="login-form" method="post" role="form" >
                     <div class="form-group">
                         <div class="col-xs-12  ">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                                 <input type="text" id="username" name="username" class="form-control" placeholder="用户名"
-                                       check-type="required" required-message="请填写你的大名。">
+                                       check-type="required" required-message="">
                             </div>
                         </div>
                     </div>
@@ -165,13 +165,13 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                                 <input type="password" id="password" name="password" class="form-control"
-                                       placeholder="密码" check-type="required" minlength="6">
+                                       placeholder="密码" check-type="required" minlength="6" required-message="">
                             </div>
                         </div>
                     </div>
                     <div class="form-group form-actions">
                         <div class="col-xs-4 col-xs-offset-4 ">
-                            <button type="submit" id="submit1" class="btn btn-primary btn-lg btn-block">登 录</button>
+                            <button type="submit" id="login-submit" class="btn btn-primary btn-lg btn-block">登 录</button>
                         </div>
                     </div>
                     <div class="form-group">
