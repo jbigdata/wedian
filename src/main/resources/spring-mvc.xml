@@ -193,6 +193,15 @@
 		<property name="queueCapacity" value="${task.queue_capacity}" />
 		<property name="keepAliveSeconds" value="${task.keep_alive_seconds}" />
 	</bean>
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="cacheSeconds" value="${message.cache_seconds}" />
+		<property name="useCodeAsDefaultMessage" value="true" />
+		<property name="basenames">
+			<list>
+				<value>${message.common_path}</value>
+			</list>
+		</property>
+	</bean>
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.FixedLocaleResolver">
 		<property name="defaultLocale" value="${locale}" />
 	</bean>
