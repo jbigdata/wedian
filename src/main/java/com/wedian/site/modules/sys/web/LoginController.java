@@ -87,7 +87,7 @@ public class LoginController extends BaseController{
 		
 		// 如果已经登录，则跳转到管理首页
 		if(principal != null){
-			return "redirect:" + adminPath;
+			return "redirect:/"; //+ adminPath;
 		}
 
 		String username = WebUtils.getCleanParam(request, FormAuthenticationFilter.DEFAULT_USERNAME_PARAM);
@@ -123,8 +123,8 @@ public class LoginController extends BaseController{
 		if (mobile){
 	        return renderString(response, model);
 		}
-		
-		return "modules/sys/sysLogin.jsp";
+		return "/login.ftl";
+		//return "modules/sys/sysLogin.jsp";
 	}
 
 	/**

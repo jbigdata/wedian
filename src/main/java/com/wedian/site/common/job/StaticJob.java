@@ -1,7 +1,6 @@
 package com.wedian.site.common.job;
 
 
-import com.wedian.site.modules.cms.service.StaticService;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -18,8 +17,8 @@ import javax.annotation.Resource;
 @Lazy(false)
 public class StaticJob {
 
-	@Resource
-	private StaticService staticService;
+	//@Resource
+	//private StaticService staticService;
 
 	/**
 	 * 生成静态${job.static_build.cron}
@@ -28,7 +27,7 @@ public class StaticJob {
 	public void build() {
 	//	System.out.println("-------------------11111111111111111111-------");
 		//staticService.buildAll();
-		staticService.buildIndex();
+	//	staticService.buildIndex();
 	}
 
 }
