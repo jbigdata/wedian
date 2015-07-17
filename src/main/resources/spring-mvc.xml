@@ -166,6 +166,7 @@
 				<entry key="setting" value="#{T(com.wedian.site.common.utils.SettingUtils).get()}" />
 				<entry key="message" value-ref="messageMethod" />
                 <entry key="abbreviate" value-ref="abbreviateMethod" />
+                <entry key="flash_message" value-ref="flashMessageDirective" />
 			</map>
 
 		</property>
@@ -199,6 +200,7 @@
 		<property name="basenames">
 			<list>
 				<value>${message.common_path}</value>
+                <value>${message.site_path}</value>
 			</list>
 		</property>
 	</bean>

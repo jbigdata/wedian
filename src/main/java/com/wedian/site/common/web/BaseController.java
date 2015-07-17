@@ -14,8 +14,6 @@ import javax.validation.ValidationException;
 import javax.validation.Validator;
 
 import com.wedian.site.common.beanvalidator.BeanValidators;
-import com.wedian.site.common.template.directive.FlashMessageDirective;
-import com.wedian.site.common.utils.SpringUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.slf4j.Logger;
@@ -67,20 +65,6 @@ public abstract class BaseController {
 	 */
 	@Autowired
 	protected Validator validator;
-
-    /** 错误视图 */
-    protected static final String ERROR_VIEW = "/site/common/error";
-
-    /** 错误消息 */
-    protected static final Message ERROR_MESSAGE = Message.error("shop.message.error");
-
-    /** 成功消息 */
-    protected static final Message SUCCESS_MESSAGE = Message.success("shop.message.success");
-
-    /** "验证结果"参数名称 */
-    private static final String CONSTRAINT_VIOLATIONS_ATTRIBUTE_NAME = "constraintViolations";
-
-
 
 	/**
 	 * 服务端参数有效性验证
@@ -227,33 +211,6 @@ public abstract class BaseController {
 //				return value != null ? DateUtils.formatDateTime((Date)value) : "";
 //			}
 		});
-        binder.registerCustomEditor(String.class, new HtmlCleanEditor(true, true));
-        binder.registerCustomEditor(Date.class, new DateEditor(true));
 	}
-    /**
-     * 获取国际化消息
-     *
-     * @param code
-     *            代码
-     * @param args
-     *            参数
-     * @return 国际化消息
-     */
-    protected String message(String code, Object... args) {
-        return SpringUtils.getMessage(code, args);
-    }
 
-    /**
-     * 添加瞬时消息
-     *
-     * @param redirectAttributes
-     *            RedirectAttributes
-     * @param message
-     *            消息
-     */
-    protected void addFlashMessage(RedirectAttributes redirectAttributes, Message message) {
-        if (redirectAttributes != null && message != null) {
-            redirectAttributes.addFlashAttribute(FlashMessageDirective.FLASH_MESSAGE_ATTRIBUTE_NAME, message);
-        }
-    }
 }

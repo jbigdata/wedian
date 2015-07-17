@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0"/>
-    <title>${systemName} - 登录</title>
+    <title>${systemName} - 加入微点</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="${base}/static/assets/css/bootstrap.min.css">
@@ -54,9 +54,9 @@
         }
 
         .login-content {
-            height: 300px;
+            height: 430px;
             width: 100%;
-            max-width: 500px;
+            max-width: 700px;
             background-color: #ffffff;
             float: left;
         }
@@ -150,6 +150,10 @@
         </div>
         <div class="login-content ">
             <div class="form">
+
+                <div id="messageBox" class="alert alert-error "><button data-dismiss="alert" class="close">×</button>
+                    <label id="loginError" class="error">sss</label>
+                </div>
                 <form action="${base}/a/login" id="login-form" method="post" role="form" >
                     <div class="form-group">
                         <div class="col-xs-12  ">
@@ -169,30 +173,32 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12  ">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                <input type="password" id="rpassword" name="rpassword" class="form-control"
+                                       placeholder="确认密码" check-type="required" minlength="6" required-message="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12  ">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+                                <input type="text" id="phone" name="phone" class="form-control"
+                                       placeholder="手机号" check-type="required" minlength="6" required-message="">
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group form-actions">
                         <div class="col-xs-4 col-xs-offset-4 ">
-                            <button type="submit" id="login-submit" class="btn btn-primary btn-lg btn-block">登 录</button>
+                            <button type="submit" id="login-submit" class="btn btn-primary">立即注册</button>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-xs-6 link">
-                            <p class="text-center remove-margin">
-                                <small>忘记密码？</small>
-                                <a href="javascript:void(0)">
-                                    <small>找回</small>
-                                </a>
-                            </p>
-                        </div>
-                        <div class="col-xs-6 link">
-                            <p class="text-center remove-margin">
-                                <small>还没注册?</small>
-                                <a href="${base}/reg.shtml">
-                                    <small>注册</small>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </form>
+                 </form>
             </div>
         </div>
     </div>

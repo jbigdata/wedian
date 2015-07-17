@@ -73,6 +73,7 @@
                     <li><a href="" target="_self">${navigation.name}</a></li>
                     </#list>
                     </@navigation_list>
+                 <li><a href="${base}/login.shtml"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 登录</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

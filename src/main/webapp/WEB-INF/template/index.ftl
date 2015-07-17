@@ -222,8 +222,7 @@
                         <li><a href="#" data-filter=".web">WEB设计</a></li>
                         <li><a href="#" data-filter=".photography">图形处理</a></li>
                         <li><a href="#" data-filter=".app" >移动端设计</a></li>
-                        <li><a href="#" data-filter=".branding" >个性设计
-                        </a></li>
+                        <li><a href="#" data-filter=".branding" >个性设计</a></li>
                     </ol>
                 </li>
             </ul>
