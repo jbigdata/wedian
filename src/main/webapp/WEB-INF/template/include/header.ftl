@@ -73,7 +73,21 @@
                     <li><a href="" target="_self">${navigation.name}</a></li>
                     </#list>
                     </@navigation_list>
-                 <li><a href="${base}/login.shtml"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 登录</a></li>
+        <#if user.id??>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">我的微点<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 个人信息</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> 博客管理</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 项目管理</a></li>
+                    <li class="divider"></li>
+                    <li><a href="${base}/a/logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> 安全退出</a></li>
+
+                </ul>
+            </li>
+        <#else>
+            <li><a href="${base}/login.shtml"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 登录</a></li>
+        </#if>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

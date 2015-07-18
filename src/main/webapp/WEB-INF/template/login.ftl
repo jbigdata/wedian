@@ -165,7 +165,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                                 <input type="password" id="password" name="password" class="form-control"
-                                       placeholder="密码" check-type="required" minlength="6" required-message="">
+                                       placeholder="密码" check-type="required"  required-message="">
                             </div>
                         </div>
                     </div>
