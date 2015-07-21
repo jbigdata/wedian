@@ -154,14 +154,22 @@
                 <div id="messageBox" class="alert alert-error "><button data-dismiss="alert" class="close">×</button>
                     <label id="loginError" class="error">sss</label>
                 </div>
-                <form action="${base}/a/login" id="login-form" method="post" role="form" >
+                <form action="${base}/reg.sthml" id="login-form" method="post" role="form" >
                     <div class="form-group">
                         <div class="col-xs-12  ">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                <input type="text" id="username" name="username" class="form-control" placeholder="用户名"
+                                <input type="text" id="loginName" name="loginName" class="form-control" placeholder="用户名"
                                        check-type="required" required-message="">
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12  ">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="昵称"
+                                   check-type="required" required-message="">
                         </div>
                     </div>
                     <div class="form-group">
@@ -188,8 +196,18 @@
                         <div class="col-xs-12  ">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                                <input type="text" id="phone" name="phone" class="form-control"
+                                <input type="text" id="mobile" name="mobile" class="form-control"
                                        placeholder="手机号" check-type="required" minlength="6" required-message="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12  ">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+                                <input type="text" id="email" name="email" class="form-control"
+                                       placeholder="邮箱" check-type="required" minlength="6" required-message="">
                             </div>
                         </div>
                     </div>

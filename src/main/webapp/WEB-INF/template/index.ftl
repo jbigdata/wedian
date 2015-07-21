@@ -26,8 +26,7 @@
             <div class="col-md-6">
                 <div class="about-text">
                     <div class="section-title">
-                        <h4>关于我们</h4>
-                        <h2>了解我们 <strong>about us</strong></h2>
+                        <h2>了解我们 <strong></strong></h2>
                         <hr>
                         <div class="clearfix"></div>
                     </div>
@@ -35,15 +34,15 @@
                     <ul class="about-list">
                         <li>
                             <span class="fa fa-dot-circle-o"></span>
-                            <strong>Mission</strong> - <em>We deliver uniqueness and quality</em>
+                            <strong>使命</strong> - <em>我们提供优质的服务和产品</em>
                         </li>
                         <li>
                             <span class="fa fa-dot-circle-o"></span>
-                            <strong>Skills</strong> - <em>Delivering fast and excellent results</em>
+                            <strong>技能</strong> - <em>提供快速和便捷的开发平台</em>
                         </li>
                         <li>
                             <span class="fa fa-dot-circle-o"></span>
-                            <strong>Clients</strong> - <em>Satisfied clients thanks to our experience</em>
+                            <strong>客户</strong> - <em>感谢客户对我们的信赖</em>
                         </li>
                     </ul>
                 </div>
@@ -152,7 +151,7 @@
             <div class="col-md-3 col-sm-6 service">
                 <i class="fa fa-bullhorn"></i>
                 <h4><strong>一站式服务</strong></h4>
-                <p>从开发到运营，一直站服务</p>
+                <p>从开发到运营，一站式服务</p>
             </div>
         </div>
     </div>

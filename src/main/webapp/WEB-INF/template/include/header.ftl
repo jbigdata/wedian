@@ -79,8 +79,9 @@
                 <ul class="dropdown-menu">
                     <li><a href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 个人信息</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> 博客管理</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 项目管理</a></li>
+                    <li><a href="${base}/a/"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 后台管理</a></li>
                     <li class="divider"></li>
+                    <li><a href="${base}/a/logout"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> 修改密码</a></li>
                     <li><a href="${base}/a/logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> 安全退出</a></li>
 
                 </ul>
