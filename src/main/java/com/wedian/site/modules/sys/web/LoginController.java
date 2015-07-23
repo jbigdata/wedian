@@ -31,6 +31,7 @@ import com.wedian.site.common.web.BaseController;
 import com.wedian.site.modules.sys.security.FormAuthenticationFilter;
 import com.wedian.site.modules.sys.security.SystemAuthorizingRealm.Principal;
 import com.wedian.site.modules.sys.utils.UserUtils;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 登录Controller
@@ -82,14 +83,14 @@ public class LoginController extends BaseController{
 	 * 登录失败，真正登录的POST请求由Filter完成
 	 */
 	@RequestMapping(value = "${adminPath}/login", method = RequestMethod.POST)
+    @ResponseBody
 	public String loginFail(HttpServletRequest request, HttpServletResponse response, Model model) {
 		SystemAuthorizingRealm.Principal principal = UserUtils.getPrincipal();
-		
+
 		// 如果已经登录，则跳转到管理首页
 		if(principal != null){
-			return "redirect:/"; //+ adminPath;
+		//	return "redirect:/"; //+ adminPath;
 		}
-
 
 		String username = WebUtils.getCleanParam(request, FormAuthenticationFilter.DEFAULT_USERNAME_PARAM);
 		boolean rememberMe = WebUtils.isTrue(request, FormAuthenticationFilter.DEFAULT_REMEMBER_ME_PARAM);
@@ -107,10 +108,10 @@ public class LoginController extends BaseController{
 		model.addAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME, exception);
 		model.addAttribute(FormAuthenticationFilter.DEFAULT_MESSAGE_PARAM, message);
 		
-		if (logger.isDebugEnabled()){
-			logger.debug("login fail, active session size: {}, message: {}, exception: {}", 
-					sessionDAO.getActiveSessions(false).size(), message, exception);
-		}
+//		if (logger.isDebugEnabled()){
+//			logger.debug("login fail, active session size: {}, message: {}, exception: {}",
+//					sessionDAO.getActiveSessions(false).size(), message, exception);
+//		}
 		
 		// 非授权异常，登录失败，验证码加1。
 		if (!UnauthorizedException.class.getName().equals(exception)){

@@ -5,7 +5,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.0.xsd
-	    http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
+	    http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd" default-lazy-init="true">
     
     <description>Spring MVC Configuration</description>
     
@@ -200,6 +200,7 @@
 		<property name="basenames">
 			<list>
 				<value>${message.common_path}</value>
+				<value>${message.admin_path}</value>
                 <value>${message.site_path}</value>
 			</list>
 		</property>

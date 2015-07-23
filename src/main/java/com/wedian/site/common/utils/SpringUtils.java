@@ -89,6 +89,7 @@ public final class SpringUtils implements ApplicationContextAware, DisposableBea
 	 */
 	public static String getMessage(String code, Object... args) {
 		LocaleResolver localeResolver = getBean("localeResolver", LocaleResolver.class);
+		System.out.println("--------------------------"+localeResolver);
 		Locale locale = localeResolver.resolveLocale(null);
 		return applicationContext.getMessage(code, args, locale);
 	}

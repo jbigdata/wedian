@@ -42,6 +42,10 @@ public class Global {
 	public static final String SHOW = "1";
 	public static final String HIDE = "0";
 
+    //会员
+    public static final String MEMBER_USER_TYPE="2";
+
+    public static final String MEMBER_COMPANY_ID="0";
 	/**
 	 * 是/否
 	 */
@@ -98,6 +102,14 @@ public class Global {
 	 */
 	public static String getUrlSuffix() {
 		return getConfig("urlSuffix");
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public static String getWeixinUrl(){
+		return  getConfig("weixinUrl");
 	}
 	
 	/**
@@ -180,5 +192,7 @@ public class Global {
 		}
 		return projectPath;
     }
+
+
 	
 }

@@ -18,7 +18,7 @@ import freemarker.template.TemplateModelException;
 /**
  * 模板方法 - 多语言
  * 
- * @author SHOP++ Team
+ * @author wanliang
  * @version 3.0
  */
 @Component("messageMethod")

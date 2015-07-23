@@ -37,6 +37,8 @@ import com.wedian.site.common.utils.DateUtils;
  */
 public abstract class BaseController {
 
+    protected  Result result;
+
 	/**
 	 * 日志对象
 	 */

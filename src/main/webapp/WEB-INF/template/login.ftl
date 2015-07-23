@@ -114,33 +114,33 @@
 </head>
 
 <body>
-<nav id="tf-menu" class="navbar navbar-default navbar-fixed-top on">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">${systemName}<br>we-dian.com</a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="${base}/index.html" class="page-scroll">首页</a></li>
-                [@navigation_list]
-                [#list navigations as navigation]
-                <li><a href="${navigation.url}" target="_self">${navigation.name}</a></li>
-                [/#list]
-                [/@navigation_list]
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
-</nav>
+<#--<nav id="tf-menu" class="navbar navbar-default navbar-fixed-top on">-->
+    <#--<div class="container">-->
+        <#--<!-- Brand and toggle get grouped for better mobile display &ndash;&gt;-->
+        <#--<div class="navbar-header">-->
+            <#--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"-->
+                    <#--data-target="#bs-example-navbar-collapse-1">-->
+                <#--<span class="sr-only">Toggle navigation</span>-->
+                <#--<span class="icon-bar"></span>-->
+                <#--<span class="icon-bar"></span>-->
+                <#--<span class="icon-bar"></span>-->
+            <#--</button>-->
+            <#--<a class="navbar-brand" href="index.html">${systemName}<br>we-dian.com</a>-->
+        <#--</div>-->
+        <#--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+            <#--<ul class="nav navbar-nav navbar-right">-->
+                <#--<li><a href="${base}/index.html" class="page-scroll">首页</a></li>-->
+                <#--[@navigation_list]-->
+                <#--[#list navigations as navigation]-->
+                <#--<li><a href="${navigation.url}" target="_self">${navigation.name}</a></li>-->
+                <#--[/#list]-->
+                <#--[/@navigation_list]-->
+            <#--</ul>-->
+        <#--</div>-->
+        <#--<!-- /.navbar-collapse &ndash;&gt;-->
+    <#--</div>-->
+    <#--<!-- /.container-fluid &ndash;&gt;-->
+<#--</nav>-->
 <div class="box overlay">
     <div class="login-box">
         <div class="login-title text-center">
