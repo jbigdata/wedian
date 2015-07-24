@@ -1,6 +1,9 @@
 package com.wedian.site.common.web;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -11,6 +14,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.text.MessageFormat;
@@ -86,16 +90,21 @@ public class HttpClientUtils {
      * @throws java.io.UnsupportedEncodingException
      */
     public static String get(String url, Object[] params) {
-        HttpClient httpclient = getHttpClient();
+        HttpClient httpclient =null;
 
         String messages = MessageFormat.format(url, params);
 
         HttpGet get = new HttpGet(messages);
-
+        get.setHeader("Content-Type", "application/json; encoding=utf-8");
+        get.setHeader("Accept", "application/json");
         ResponseHandler<String> responseHandler = new BasicResponseHandler();
         String responseJson = null;
         try {
-            responseJson = httpclient.execute(get, responseHandler);
+            httpclient=new SSLClient();
+            HttpResponse response  = httpclient.execute(get);
+            HttpEntity entity = response.getEntity();
+            responseJson = EntityUtils.toString(entity, "UTF-8").trim();
+            get.abort();
             log.info("HttpClient GET请求结果：" + responseJson);
         } catch (ClientProtocolException e) {
             e.printStackTrace();
@@ -103,7 +112,10 @@ public class HttpClientUtils {
         } catch (IOException e) {
             e.printStackTrace();
             log.info("HttpClient GET请求异常：" + e.getMessage());
-        } finally {
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.info("HttpClient GET请求异常：" + e.getMessage());
+        }finally {
             httpclient.getConnectionManager().closeExpiredConnections();
             httpclient.getConnectionManager().closeIdleConnections(30, TimeUnit.SECONDS);
         }
@@ -115,19 +127,26 @@ public class HttpClientUtils {
      * @return
      */
     public static String get(String url) {
-        HttpClient httpclient = getHttpClient();
-
+        HttpClient httpclient = null;
         HttpGet get = new HttpGet(url);
-
+        get.setHeader("Content-Type", "application/json; encoding=utf-8");
+        get.setHeader("Accept", "application/json");
         ResponseHandler<String> responseHandler = new BasicResponseHandler();
         String responseJson = null;
         try {
-            responseJson = httpclient.execute(get, responseHandler);
+            httpclient=new SSLClient();
+            HttpResponse response  = httpclient.execute(get);
+            HttpEntity entity = response.getEntity();
+            responseJson = EntityUtils.toString(entity, "UTF-8").trim();
+            get.abort();
             log.info("HttpClient GET请求结果：" + responseJson);
         } catch (ClientProtocolException e) {
             e.printStackTrace();
             log.info("HttpClient GET请求异常：" + e.getMessage());
         } catch (IOException e) {
+            e.printStackTrace();
+            log.info("HttpClient GET请求异常：" + e.getMessage());
+        } catch (Exception e) {
             e.printStackTrace();
             log.info("HttpClient GET请求异常：" + e.getMessage());
         } finally {
