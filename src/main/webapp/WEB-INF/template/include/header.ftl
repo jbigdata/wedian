@@ -47,12 +47,14 @@
 <!-- Javascripts
 ================================================== -->
 <script type="text/javascript" src="${base}/static/assets/js/main.js"></script>
-
+<!--menu-->
+<link rel="stylesheet" type="text/css" href="${base}/static/assets/css/ace.min.css">
+<script type="text/javascript" src="${base}/static/assets/js/ace.min.js"></script>
 </head>
 <body>
 <!-- Navigation
 ==========================================-->
-<nav id="tf-menu" class="navbar navbar-default navbar-fixed-top on">
+<nav id="tf-menu" class="navbar navbar-default  on">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -70,7 +72,7 @@
                     <li><a href="${base}/index.html" class="page-scroll">首页</a></li>
                     <@navigation_list>
                     <#list navigations as navigation>
-                    <li><a href="" target="_self">${navigation.name}</a></li>
+                    <li><a href="${base}/${navigation.url}" target="_self">${navigation.name}</a></li>
                     </#list>
                     </@navigation_list>
         <#if user.id??>

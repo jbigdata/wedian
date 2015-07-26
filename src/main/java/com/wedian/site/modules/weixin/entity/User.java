@@ -24,14 +24,6 @@ import java.util.List;
  */
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    private String email;    // 邮箱地址
-    private String appid;    // appid
-    private String secret;    // appKey
-    private String grantType;    //类型
-    private String phone;// 手机号
-    private String name;// 信息
-    private String password;
     private String subscribe;
     private String openid;
     private String nickname;
@@ -45,70 +37,6 @@ public class User implements Serializable {
     private String unionid;
     private String remark;
     private String groupid;
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAppid() {
-        return appid;
-    }
-
-    public void setAppid(String appid) {
-        this.appid = appid;
-    }
-
-    public String getSecret() {
-        return secret;
-    }
-
-    public void setSecret(String secret) {
-        this.secret = secret;
-    }
-
-    public String getGrantType() {
-        return grantType;
-    }
-
-    public void setGrantType(String grantType) {
-        this.grantType = grantType;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getGroupid() {
-        return groupid;
-    }
-
-    public void setGroupid(String groupid) {
-        this.groupid = groupid;
-    }
 
     public String getSubscribe() {
         return subscribe;
@@ -204,6 +132,14 @@ public class User implements Serializable {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getGroupid() {
+        return groupid;
+    }
+
+    public void setGroupid(String groupid) {
+        this.groupid = groupid;
     }
 }
 

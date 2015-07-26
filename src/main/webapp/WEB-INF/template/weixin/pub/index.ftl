@@ -39,23 +39,9 @@
             [#include "/include/menu.ftl" /]
             </div>
             <div class="col-md-10">
-                <div class="categories">
-
-                    <ul class="cat">
-                        <li class="pull-left"><h4>按分组浏览:</h4></li>
-                        <li class="pull-right">
-                            <ol class="type">
-                              [#list groups as group]
-                                <li><a href="#" name="groupBtn" id="${group.id}">${group.name}(${group.count})</a></li>
-                              [/#list]
-                            </ol>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="panel panel-default">
+                 <div class="panel panel-default">
                     <!-- Default panel contents -->
-                    <div class="panel-heading">用户列表</div>
+                    <div class="panel-heading">公众号列表</div>
 
                     <!-- Table -->
                     <table class="table">

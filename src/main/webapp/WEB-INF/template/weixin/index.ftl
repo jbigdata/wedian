@@ -1,44 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>
+        导航菜单
+    </title>
 
+    <link rel="stylesheet" type="text/css" href="${base}/static/assets/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/408/gjeegkdb/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="${base}/static/assets/js/bootstrap.min.js">
+    </script>
+    </script>
+    <script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/408/gjeegkdb/ace.min.js">
+    </script>
+</head>
+<body>
 <div class="sidebar" id="sidebar">
 
     <!-- #sidebar-shortcuts -->
 
     <ul class="nav nav-list">
         <li class="active">
-            <a href="${base}/weixin/user/index.shtml">
-                <i class="icon-dashboard glyphicon glyphicon-qrcode">
+            <a href="index.html">
+                <i class="icon-dashboard">
                 </i>
 						<span class="menu-text">
-							公众号管理
-						</span>
-            </a>
-        </li>
-        <li>
-            <a href="${base}/weixin/user/index.shtml">
-                <i class="icon-dashboard glyphicon glyphicon-user">
-                </i>
-						<span class="menu-text">
-							粉丝管理
+							控制台
 						</span>
             </a>
         </li>
 
         <li>
             <a href="typography.html">
-                <i class="icon-text-width glyphicon glyphicon-baby-formula">
+                <i class="icon-text-width">
                 </i>
 						<span class="menu-text">
-							消息管理
+							文字排版
 						</span>
             </a>
         </li>
 
         <li>
             <a href="#" class="dropdown-toggle">
-                <i class="icon-desktop glyphicon glyphicon glyphicon-briefcase">
+                <i class="icon-desktop">
                 </i>
 						<span class="menu-text">
-							素材管理
+							UI 组件
 						</span>
 
                 <b class="arrow icon-angle-down">
@@ -48,9 +58,9 @@
             <ul class="submenu">
                 <li>
                     <a href="elements.html">
-                        <i class="icon-double-angle-right glyphicon glyphicon-shopping-cart">
+                        <i class="icon-double-angle-right">
                         </i>
-                        微店管理
+                        组件
                     </a>
                 </li>
 
@@ -140,10 +150,10 @@
 
         <li>
             <a href="#" class="dropdown-toggle">
-                <i class="icon-list  glyphicon glyphicon-shopping-cart">
+                <i class="icon-list">
                 </i>
 						<span class="menu-text">
-							微店管理
+							表格
 						</span>
 
                 <b class="arrow icon-angle-down">
@@ -171,10 +181,10 @@
 
         <li>
             <a href="#" class="dropdown-toggle">
-                <i class="icon-edit glyphicon glyphicon-stats">
+                <i class="icon-edit">
                 </i>
 						<span class="menu-text">
-							统计分析
+							表单
 						</span>
 
                 <b class="arrow icon-angle-down">
@@ -215,12 +225,48 @@
                 </li>
             </ul>
         </li>
+
         <li>
-            <a href="#" class="dropdown-toggle">
-                <i class="icon-tag glyphicon glyphicon-list">
+            <a href="widgets.html">
+                <i class="icon-list-alt">
                 </i>
 						<span class="menu-text">
-							数据同步
+							插件
+						</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="calendar.html">
+                <i class="icon-calendar">
+                </i>
+
+						<span class="menu-text">
+							日历
+							<span class="badge badge-transparent tooltip-error" title="" data-original-title="2 Important Events">
+								<i class="icon-warning-sign red bigger-130">
+                                </i>
+							</span>
+						</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="gallery.html">
+                <i class="icon-picture">
+                </i>
+						<span class="menu-text">
+							相册
+						</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-tag">
+                </i>
+						<span class="menu-text">
+							更多页面
 						</span>
 
                 <b class="arrow icon-angle-down">
@@ -345,3 +391,5 @@
     </div>
 
 </div>
+</body>
+</html>
