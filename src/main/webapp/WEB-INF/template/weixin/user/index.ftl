@@ -6,7 +6,7 @@
     <script type="application/javascript">
         $(function () {
             $("a[name='groupBtn']").bind("click", function () {
-                $.ajax({
+                $.ajax2({
                     type: "get",//使用get方法访问后台
                     dataType: "json",//返回json格式的数据
                     url: "${base}/weixin/user/" + this.id,//要访问的后台地址
