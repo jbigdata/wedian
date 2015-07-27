@@ -66,14 +66,14 @@ public class GenSchemeController extends BaseController {
         Page<GenScheme> page = genSchemeService.find(new Page<GenScheme>(request, response), genScheme);
         model.addAttribute("page", page);
 		
-		return "modules/gen/genSchemeList";
+		return "modules/gen/genSchemeList.jsp";
 	}
 
 	@RequiresPermissions("gen:genScheme:view")
 	@RequestMapping(value = "form")
 	public String form(GenScheme genScheme, Model model) {
 		if (StringUtils.isBlank(genScheme.getPackageName())){
-			genScheme.setPackageName("com.thinkgem.jeesite.modules");
+			genScheme.setPackageName("com.wedian.site.modules");
 		}
 //		if (StringUtils.isBlank(genScheme.getFunctionAuthor())){
 //			genScheme.setFunctionAuthor(UserUtils.getUser().getName());
@@ -81,7 +81,7 @@ public class GenSchemeController extends BaseController {
 		model.addAttribute("genScheme", genScheme);
 		model.addAttribute("config", GenUtils.getConfig());
 		model.addAttribute("tableList", genTableService.findAll());
-		return "modules/gen/genSchemeForm";
+		return "modules/gen/genSchemeForm.jsp";
 	}
 
 	@RequiresPermissions("gen:genScheme:edit")

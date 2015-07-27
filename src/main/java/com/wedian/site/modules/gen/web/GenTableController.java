@@ -64,7 +64,7 @@ public class GenTableController extends BaseController {
 		}
         Page<GenTable> page = genTableService.find(new Page<GenTable>(request, response), genTable);
         model.addAttribute("page", page);
-		return "modules/gen/genTableList";
+		return "modules/gen/genTableList.jsp";
 	}
 
 	@RequiresPermissions("gen:genTable:view")
@@ -84,7 +84,7 @@ public class GenTableController extends BaseController {
 		}
 		model.addAttribute("genTable", genTable);
 		model.addAttribute("config", GenUtils.getConfig());
-		return "modules/gen/genTableForm";
+		return "modules/gen/genTableForm.jsp";
 	}
 
 	@RequiresPermissions("gen:genTable:edit")

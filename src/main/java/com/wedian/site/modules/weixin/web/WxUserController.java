@@ -4,13 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.wedian.site.common.config.Global;
-import com.wedian.site.common.mapper.JsonMapper;
 import com.wedian.site.common.web.BaseController;
 import com.wedian.site.common.web.HttpClientUtils;
-import com.wedian.site.common.web.Result;
-import com.wedian.site.modules.weixin.entity.Group;
+import com.wedian.site.modules.weixin.entity.WxGroup;
 import com.wedian.site.modules.weixin.entity.Token;
-import com.wedian.site.modules.weixin.entity.User;
+import com.wedian.site.modules.weixin.entity.WxUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,7 +36,7 @@ public class WxUserController extends BaseController {
 
         String groupStr = HttpClientUtils.get(Global.getWeixinUrl() + "groups/get?access_token={0}", new Object[]{token.getAccess_token()});
         logger.debug("groupStr:"+groupStr);
-        List<Group>  groupList=JSON.parseArray(JSON.parseObject(groupStr).getString("groups"),Group.class);
+        List<WxGroup>  groupList=JSON.parseArray(JSON.parseObject(groupStr).getString("groups"),WxGroup.class);
         logger.debug("groupList:"+JSON.parseObject(groupStr).getString("groups"));
         model.addAttribute("groups", groupList);
         return "weixin/user/index.ftl";
@@ -59,10 +57,10 @@ public class WxUserController extends BaseController {
         resultMap.put("count",userJson.get("count"));
         resultMap.put("next_openid",userJson.get("next_openid"));
         JSONArray openidArr=userJson.getJSONObject("data").getJSONArray("openid");
-        List<User> userList=new ArrayList<User>();
+        List<WxUser> userList=new ArrayList<WxUser>();
         for(int i=0;i<openidArr.size();i++) {
             String userStr = HttpClientUtils.get(Global.getWeixinUrl() + "user/info?access_token={0}&openid={1}&lang=zh_CN", new Object[]{token.getAccess_token(),openidArr.get(i)});
-            User user=JSON.parseObject(userStr, User.class);
+            WxUser user=JSON.parseObject(userStr, WxUser.class);
             userList.add(user);
         }
         resultMap.put("data",userList);
