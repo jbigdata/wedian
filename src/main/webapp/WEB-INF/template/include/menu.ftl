@@ -5,7 +5,7 @@
 
     <ul class="nav nav-list">
         <li class="active">
-            <a href="${base}/weixin/user/index.shtml">
+            <a href="${base}/weixin/pub/index.shtml">
                 <i class="icon-dashboard glyphicon glyphicon-qrcode">
                 </i>
 						<span class="menu-text">

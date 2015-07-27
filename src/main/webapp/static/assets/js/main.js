@@ -129,7 +129,7 @@ main();
 
 /******重写Ajax操作,做成通用Loading操作*******/
 $.ajax2 = function (options, aimDiv) {
-    var img = $("<img id=\"progressImgage\"  src=\"../img/loading.gif\" />"); //Loading小图标
+    var img = $("<img id=\"progressImgage\"  src=\"/static/assets/img/loading.gif\" />"); //Loading小图标
     var mask = $("<div id=\"maskOfProgressImage\"></div>").addClass("mask").addClass("hide"); //Div遮罩
     var PositionStyle = "fixed";
     //是否将Loading固定在aimDiv中操作,否则默认为全屏Loading遮罩

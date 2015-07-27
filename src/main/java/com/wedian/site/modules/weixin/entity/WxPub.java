@@ -22,7 +22,7 @@ public class WxPub extends DataEntity<WxPub> {
 	private String grantType;		// grant_type
 	private String name;		// name
 	private String phone;		// phone
-	
+	private boolean isCheck;
 	public WxPub() {
 		super();
 	}
@@ -93,5 +93,6 @@ public class WxPub extends DataEntity<WxPub> {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
+
+
 }
