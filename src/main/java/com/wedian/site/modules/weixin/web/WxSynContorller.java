@@ -36,9 +36,15 @@ public class WxSynContorller extends BaseController {
     @Autowired
     private WxGroupService wxGroupService;
 
+
     @RequestMapping(value = "/syn", method = RequestMethod.GET)
+    public String index(ModelMap model) {
+
+        return "weixin/syn.ftl";
+    }
+        @RequestMapping(value = "/syn", method = RequestMethod.POST)
     @ResponseBody
-    public Object index(ModelMap model) {
+    public Object syn(ModelMap model) {
         String tokenJson = HttpClientUtils.get(Global.getWeixinUrl() + "token?grant_type=client_credential&appid=wx28498fc8e188a035&secret=3058bfb4f7751bfeff1d2a5d810a5412");
         logger.debug("tokenJson:"+tokenJson);
         Token token= JSON.parseObject(tokenJson, Token.class);

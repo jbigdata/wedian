@@ -24,13 +24,64 @@
         </li>
 
         <li>
-            <a href="typography.html">
+            <a href="#" class="dropdown-toggle">
                 <i class="icon-text-width glyphicon glyphicon-baby-formula">
                 </i>
 						<span class="menu-text">
 							消息管理
-						</span>
+						</span>  <b class="arrow icon-angle-down">
+            </b>
             </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="${base}/weixin/message/send.shtml">
+                        <i class="icon-double-angle-right">
+                        </i>
+                        发送消息
+                    </a>
+                </li>
+
+                <li>
+                    <a href="inbox.html">
+                        <i class="icon-double-angle-right">
+                        </i>
+                        收件箱
+                    </a>
+                </li>
+
+                <li>
+                    <a href="pricing.html">
+                        <i class="icon-double-angle-right">
+                        </i>
+                        售价单
+                    </a>
+                </li>
+
+                <li>
+                    <a href="invoice.html">
+                        <i class="icon-double-angle-right">
+                        </i>
+                        购物车
+                    </a>
+                </li>
+
+                <li>
+                    <a href="timeline.html">
+                        <i class="icon-double-angle-right">
+                        </i>
+                        时间轴
+                    </a>
+                </li>
+
+                <li>
+                    <a href="login.html">
+                        <i class="icon-double-angle-right">
+                        </i>
+                        登录 & 注册
+                    </a>
+                </li>
+            </ul>
         </li>
 
         <li>
@@ -216,7 +267,7 @@
             </ul>
         </li>
         <li>
-            <a href="#" class="dropdown-toggle">
+            <a href="${base}/weixin/syn.shtml" class="dropdown-toggle">
                 <i class="icon-tag glyphicon glyphicon-list">
                 </i>
 						<span class="menu-text">
