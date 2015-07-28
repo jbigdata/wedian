@@ -15,6 +15,7 @@ import com.wedian.site.common.persistence.DataEntity;
 public class WxGroup extends DataEntity<WxGroup> {
 	
 	private static final long serialVersionUID = 1L;
+	private String groupId;
 	private String name;		// name
 	private String count;		// count
 	
@@ -43,5 +44,12 @@ public class WxGroup extends DataEntity<WxGroup> {
 	public void setCount(String count) {
 		this.count = count;
 	}
-	
+
+	public String getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(String groupId) {
+		this.groupId = groupId;
+	}
 }

@@ -46,7 +46,7 @@
                         <li class="pull-right">
                             <ol class="type">
                               [#list groups as group]
-                                <li><a href="#" name="groupBtn" id="${group.id}">${group.name}(${group.count})</a></li>
+                                <li><a href="#" name="groupBtn" id="${group.groupId}">${group.name}(${group.count})</a></li>
                               [/#list]
                             </ol>
                         </li>

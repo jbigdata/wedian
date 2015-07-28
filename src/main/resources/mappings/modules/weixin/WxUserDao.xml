@@ -43,6 +43,12 @@
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
 		</where>
+		<if test="groupid != null and groupid != ''">
+			AND groupid = #{groupid}
+		</if>
+		<if test="createBy != null and createBy != ''">
+			AND createBy = #{createBy}
+		</if>
 		<choose>
 			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
 				ORDER BY ${page.orderBy}
@@ -140,5 +146,48 @@
 			del_flag = #{DEL_FLAG_DELETE}
 		WHERE id = #{id}
 	</update>
-	
+	<insert id="batchSave"  parameterType="java.util.List">
+		INSERT INTO wx_user(
+		id,
+		subscribe,
+		openid,
+		nickname,
+		sex,
+		language,
+		city,
+		province,
+		country,
+		headimgurl,
+		subscribe_time,
+		unionid,
+		remark,
+		groupid,
+		create_by,
+		create_date,
+		update_by,
+		update_date,
+		del_flag
+		) VALUES
+		<foreach collection="list" item="item" index="index" separator="," >
+			(#{item.id},
+			#{item.subscribe},
+			#{item.openid},
+			#{item.nickname},
+			#{item.sex},
+			#{item.language},
+			#{item.city},
+			#{item.province},
+			#{item.country},
+			#{item.headimgurl},
+			#{item.subscribeTime},
+			#{item.unionid},
+			#{item.remark},
+			#{item.groupid},
+			#{item.createBy.id},
+			#{item.createDate},
+			#{item.updateBy.id},
+			#{item.updateDate},
+			#{item.delFlag})
+		</foreach>
+	</insert>
 </mapper>

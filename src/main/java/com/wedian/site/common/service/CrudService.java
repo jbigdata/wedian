@@ -88,4 +88,12 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 		dao.delete(entity);
 	}
 
+	/**
+	 * 批量插入
+	 * @param list
+	 */
+	@Transactional(readOnly = false)
+	public void batchSave(List<T> list){
+		dao.batchSave(list);
+	}
 }

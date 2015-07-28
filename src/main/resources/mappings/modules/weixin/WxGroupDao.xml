@@ -5,6 +5,7 @@
 	<sql id="wxGroupColumns">
 		a.id AS "id",
 		a.name AS "name",
+		a.group_id AS "groupId",
 		a.count AS "count",
 		a.create_by AS "createBy.id",
 		a.create_date AS "createDate",
@@ -71,6 +72,7 @@
 			id,
 			name,
 			count,
+			group_id,
 			create_by,
 			create_date,
 			update_by,
@@ -80,6 +82,7 @@
 			#{id},
 			#{name},
 			#{count},
+			#{groupId},
 			#{createBy.id},
 			#{createDate},
 			#{updateBy.id},
@@ -102,5 +105,28 @@
 			del_flag = #{DEL_FLAG_DELETE}
 		WHERE id = #{id}
 	</update>
-	
+	<insert id="batchSave" useGeneratedKeys="true"  keyProperty="id"   parameterType="java.util.List">
+		INSERT INTO wx_group(
+		id,
+		name,
+		count,
+		group_id,
+		create_by,
+		create_date,
+		update_by,
+		update_date,
+		del_flag
+		) VALUES
+		<foreach collection="list"   item="item" index="index" separator="," >
+			(#{item.id},
+			#{item.name},
+			#{item.count},
+			#{item.groupId},
+			#{item.createBy.id},
+			#{item.createDate},
+			#{item.updateBy.id},
+			#{item.updateDate},
+			#{item.delFlag})
+		</foreach>
+	</insert>
 </mapper>
