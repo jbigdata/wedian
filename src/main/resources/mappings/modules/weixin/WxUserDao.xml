@@ -46,8 +46,8 @@
 		<if test="groupid != null and groupid != ''">
 			AND groupid = #{groupid}
 		</if>
-		<if test="createBy != null and createBy != ''">
-			AND createBy = #{createBy}
+		<if test="createBy.id != null and createBy.id != ''">
+			AND create_by = #{createBy.id}
 		</if>
 		<choose>
 			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
