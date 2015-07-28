@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.wedian.site.common.config.Global;
 import com.wedian.site.common.web.BaseController;
 import com.wedian.site.common.web.HttpClientUtils;
+import com.wedian.site.modules.sys.utils.UserUtils;
 import com.wedian.site.modules.weixin.entity.WxGroup;
 import com.wedian.site.modules.weixin.entity.Token;
 import com.wedian.site.modules.weixin.entity.WxUser;
@@ -40,6 +41,7 @@ public class WxUserController extends BaseController {
     @RequestMapping(value = "/user/index", method = RequestMethod.GET)
     public String group(ModelMap model) {
          WxGroup wxGroup=new WxGroup();
+         wxGroup.setCreateBy(UserUtils.getUser());
         model.addAttribute("groups", wxGroupService.findList(wxGroup));
         return "weixin/user/index.ftl";
     }
@@ -50,6 +52,7 @@ public class WxUserController extends BaseController {
        Map<String,Object> resultMap=new HashMap<String,Object>();
         WxUser wxUser=new WxUser();
         wxUser.setGroupid(groupId);
+        wxUser.setCreateBy(UserUtils.getUser());
         resultMap.put("data",wxUserService.findList(wxUser));
         return resultMap;
     }

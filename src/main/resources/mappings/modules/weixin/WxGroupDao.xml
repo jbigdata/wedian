@@ -56,7 +56,10 @@
 		<include refid="wxGroupJoins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
-		</where>		
+		</where>
+		<if test="createBy != null and createBy != ''">
+			AND createBy = #{createBy}
+		</if>
 		<choose>
 			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
 				ORDER BY ${page.orderBy}
