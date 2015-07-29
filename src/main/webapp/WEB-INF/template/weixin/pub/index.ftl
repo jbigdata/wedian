@@ -5,7 +5,7 @@
 [#include "/include/header.ftl"  /]
     <script type="application/javascript">
         $(function () {
-            $("input[name='chkPub']").bind("click", function () {
+            $("a[name='chkPub']").bind("click", function () {
                 $.ajax2({
                     type: "get",//使用get方法访问后台
                     dataType: "json",//返回json格式的数据
@@ -15,7 +15,7 @@
                         //    alert(msg);
                     },//AJAX请求完成时隐藏loading提示
                     success: function (data) {//msg为返回的数据，在这里做数据绑定
-
+                                 alert(data);
                     }
                 });
             });
@@ -28,35 +28,38 @@
             [#include "/include/menu.ftl" /]
             </div>
             <div class="col-md-10">
-                 <div class="panel panel-default">
-                    <!-- Default panel contents -->
-                    <div class="panel-heading">公众号列表</div>
+                <div class="col-xs-8 col-sm-9 pricing-span-body">
+                [#list list as pub]
+                    <div class="pricing-span">
+                        <div class="widget-box pricing-box-small">
+                            <div class="widget-header header-color-red3">
+                                <h5 class="bigger lighter">${pub.name}</h5>
+                            </div>
 
-                    <!-- Table -->
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th><input type="checkbox" name="chkAll"></th>
-                            <th>昵称</th>
-                            <th>邮箱</th>
-                            <th>appid</th>
-                            <th>secret</th>
-                            <th>操作</th>
-                        </tr>
-                        </thead>
-                        <tbody id="userTbody">
-                        [#list list as pub]
-                            <tr>
-                                <td><input type="checkbox" name="id"> </td>
-                                <td>${pub.name}</td>
-                                <td>${pub.email}</td>
-                                <td>${pub.appid}</td>
-                                <td>${pub.secret}</td>
-                                <td><input type="radio" name="chkPub" value="${pub.id}"></td>
-                            </tr>
-                        [/#list]
-                        </tbody>
-                    </table>
+                            <div class="widget-body">
+                                <div class="widget-main no-padding">
+                                    <ul class="list-unstyled list-striped pricing-table">
+                                        <li> ${pub.email} </li>
+                                        <li> ${pub.appid} </li>
+                                        <li>  ${pub.secret?substring(0,10)}******* </li>
+                                        <li> ${pub.phone} </li>
+
+                                        <li>
+                                            <i class="icon-ok glyphicon glyphicon-ok red"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <a href="#" name="chkPub" id="${pub.id}" class="btn btn-block btn-sm btn-danger">
+                                        <span>选择</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                [/#list]
+
                 </div>
             </div>
         </div>
