@@ -35,10 +35,10 @@
 
             <ul class="submenu">
                 <li>
-                    <a href="${base}/weixin/message/send.shtml">
+                    <a href="${base}/weixin/message/index.shtml">
                         <i class="icon-double-angle-right">
                         </i>
-                        发送消息
+                        群发消息
                     </a>
                 </li>
 

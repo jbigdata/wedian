@@ -6,6 +6,7 @@ package com.wedian.site.modules.weixin.web;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.wedian.site.common.config.Global;
+import com.wedian.site.common.utils.JedisUtils;
 import com.wedian.site.common.utils.StringUtils;
 import com.wedian.site.common.web.BaseController;
 import com.wedian.site.modules.sys.entity.Office;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -70,9 +72,16 @@ public class WxPubController extends BaseController {
 
     @RequestMapping(value = "/pub/change/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Object getUsers(@PathVariable("id")String id, ModelMap model) {
-
-         return "";
+    public Object changePub(@PathVariable("id")String id, ModelMap model) {
+		User user=UserUtils.getUser();
+		WxPub wxPub= wxPubService.get(id);
+		logger.debug(user.getId()+":"+wxPub.getAppid());
+		Map<String,String> appMap=new HashMap<String, String>();
+		appMap.put("appid",wxPub.getAppid());
+		appMap.put("secret",wxPub.getSecret());
+		appMap.put("grant_type",wxPub.getGrantType());
+		JedisUtils.setMap("pub_" + user.getId(), appMap,0);
+         return "ok";
     }
 
 	@RequestMapping(value = "save")
