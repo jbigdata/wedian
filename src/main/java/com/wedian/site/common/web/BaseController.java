@@ -6,14 +6,23 @@ package com.wedian.site.common.web;
 import java.beans.PropertyEditorSupport;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolationException;
 import javax.validation.ValidationException;
 import javax.validation.Validator;
 
+import com.alibaba.fastjson.JSON;
 import com.wedian.site.common.beanvalidator.BeanValidators;
+import com.wedian.site.common.config.Global;
+import com.wedian.site.common.utils.JedisUtils;
+import com.wedian.site.common.utils.StringUtils;
+import com.wedian.site.modules.sys.entity.User;
+import com.wedian.site.modules.sys.utils.UserUtils;
+import com.wedian.site.modules.weixin.entity.Token;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.slf4j.Logger;
@@ -213,6 +222,28 @@ public abstract class BaseController {
 //				return value != null ? DateUtils.formatDateTime((Date)value) : "";
 //			}
 		});
+	}
+
+
+	/**
+	 * 获取Token
+	 * @return
+	 */
+	protected String getWxToken(){
+		User user= UserUtils.getUser();
+		if(user==null) {
+		   return null;
+		}
+		String wx_token=JedisUtils.get("wx_token_" + user.getId());
+		if(wx_token!=null&&!wx_token.equals("")) {
+              return wx_token;
+		}
+		Map<String,String> pubMap=JedisUtils.getMap("pub_"+user.getId());
+		String tokenJson = HttpClientUtils.get(Global.getWeixinUrl() + "token?grant_type={0}&appid={1}&secret={2}",new Object[]{pubMap.get("grant_type"),pubMap.get("appid"),pubMap.get("secret")});
+		logger.debug("tokenJson:"+tokenJson);
+		Token token= JSON.parseObject(tokenJson, Token.class);
+		JedisUtils.set("wx_token_" + user.getId(),token.getAccess_token() , 7200);
+		return token.getAccess_token();
 	}
 
 }

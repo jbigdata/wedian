@@ -42,13 +42,11 @@ public class WxSynContorller extends BaseController {
 
         return "weixin/syn.ftl";
     }
-        @RequestMapping(value = "/syn", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/syn", method = RequestMethod.POST)
     @ResponseBody
     public Object syn(ModelMap model) {
-        String tokenJson = HttpClientUtils.get(Global.getWeixinUrl() + "token?grant_type=client_credential&appid=wx28498fc8e188a035&secret=3058bfb4f7751bfeff1d2a5d810a5412");
-        logger.debug("tokenJson:"+tokenJson);
-        Token token= JSON.parseObject(tokenJson, Token.class);
-        String groupStr = HttpClientUtils.get(Global.getWeixinUrl() + "groups/get?access_token={0}", new Object[]{token.getAccess_token()});
+        String groupStr = HttpClientUtils.get(Global.getWeixinUrl() + "groups/get?access_token={0}", new Object[]{this.getWxToken()});
         logger.debug("groupStr:"+groupStr);
         List<WxGroup>  groupList=JSON.parseArray(JSON.parseObject(groupStr).getString("groups"),WxGroup.class);
         logger.debug("groupList:" + JSON.parseObject(groupStr).getString("groups"));
@@ -61,7 +59,7 @@ public class WxSynContorller extends BaseController {
             wxGroups.add(wxGroup);
         }
         wxGroupService.batchSave(wxGroups);
-        String usersStr = HttpClientUtils.get(Global.getWeixinUrl() + "user/get?access_token={0}", new Object[]{token.getAccess_token()});
+        String usersStr = HttpClientUtils.get(Global.getWeixinUrl() + "user/get?access_token={0}", new Object[]{this.getWxToken()});
         logger.debug("userStr:"+usersStr);
         JSONObject userJson=JSON.parseObject(usersStr);
         HashMap<String,Object> resultMap=new HashMap<String, Object>();
@@ -71,7 +69,7 @@ public class WxSynContorller extends BaseController {
         JSONArray openidArr=userJson.getJSONObject("data").getJSONArray("openid");
         List<WxUser> userList=new ArrayList<WxUser>();
         for(int i=0;i<openidArr.size();i++) {
-            String userStr = HttpClientUtils.get(Global.getWeixinUrl() + "user/info?access_token={0}&openid={1}&lang=zh_CN", new Object[]{token.getAccess_token(),openidArr.get(i)});
+            String userStr = HttpClientUtils.get(Global.getWeixinUrl() + "user/info?access_token={0}&openid={1}&lang=zh_CN", new Object[]{this.getWxToken(),openidArr.get(i)});
             WxUser user=JSON.parseObject(userStr, WxUser.class);
             user.setCreateDate(new Date());
             user.setCreateBy(UserUtils.getUser());

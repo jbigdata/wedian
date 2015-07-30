@@ -7,16 +7,10 @@
       content="we-dian,微点">
 <meta name="author" content="we-dian.com">
 
-<!-- Favicons
-================================================== -->
-<link rel="shortcut icon" href="${base}/static/assets/img/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="${base}/static/assets/img/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="${base}/static/assets/img/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="${base}/static/assets/img/apple-touch-icon-114x114.png">
 
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="${base}/static/assets/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="${base}/static/assets/fonts/font-awesome/css/font-awesome.css">
+<#--<link rel="stylesheet" type="text/css" href="${base}/static/assets/fonts/font-awesome/css/font-awesome.css">-->
 
 <!-- Slider
 ================================================== -->

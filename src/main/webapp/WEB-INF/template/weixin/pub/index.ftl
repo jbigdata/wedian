@@ -41,7 +41,7 @@
                                     <ul class="list-unstyled list-striped pricing-table">
                                         <li> ${pub.email} </li>
                                         <li> ${pub.appid} </li>
-                                        <li>  ${pub.secret?substring(0,10)}******* </li>
+                                        <li> [#if pub.secret?length gt 10] ${pub.secret?substring(0,10)}*******[/#if] </li>
                                         <li> ${pub.phone} </li>
 
                                         <li>
