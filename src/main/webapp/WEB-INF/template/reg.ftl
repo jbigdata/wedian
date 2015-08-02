@@ -1,141 +1,61 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0"/>
-    <title>${systemName} - 加入微点</title>
+    <title>${systemName} - 登录</title>
 
+    <link rel="stylesheet" type="text/css" href="${base}/static/assets/css/reg.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="${base}/static/assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="${base}/static/assets/css/style.css">
     <script type="text/javascript" src="${base}/static/assets/js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="${base}/static/assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="${base}/static/assets/js/bootstrap3-validation.js"></script>
-    <style type="text/css">
-        html, body {
-            height: 100%;
-        }
-
-        .box {
-            background-image: url(${base}/static/assets/img/05.jpg);
-            margin: 0 auto;
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .login-box {
-            width: 100%;
-            max-width: 500px;
-            height: 400px;
-            position: absolute;
-            top: 50%;
-
-            margin-top: -200px;
-            /*设置负值，为要定位子盒子的一半高度*/
-
-        }
-
-        @media screen and (min-width: 300px) {
-            .login-box {
-                left: 50%;
-                /*设置负值，为要定位子盒子的一半宽度*/
-                margin-left: -250px;
-            }
-        }
-
-        .form {
-            width: 100%;
-            max-width: 500px;
-            height: 275px;
-            margin: 25px auto 0px auto;
-            padding-top: 25px;
-        }
-
-        .login-content {
-            height: 430px;
-            width: 100%;
-            max-width: 700px;
-            background-color: #ffffff;
-            float: left;
-        }
-
-        .input-group {
-            margin: 0px 0px 30px 0px !important;
-        }
-
-        .form-control,
-        .input-group {
-            height: 40px;
-        }
-
-        .form-group {
-            margin-bottom: 0px !important;
-        }
-
-        .login-title {
-            padding: 10px 10px;
-            background-color: #31b0d5;
-        }
-
-        .login-title h1 {
-            margin-top: 10px !important;
-        }
-
-        .login-title small {
-            color: #fff;
-        }
-
-        .link p {
-            line-height: 20px;
-            margin-top: 30px;
-        }
-
-        .btn-sm {
-            padding: 8px 24px !important;
-            font-size: 16px !important;
-        }
-    </style>
     <script type="application/javascript">
         $(function () {
-            //1. 简单写法：
-            $("#login-form").validation({icon: true});
-            //.注册
             $("#login-submit").on('click', function (event) {
-                //第一种提示写法
-                if ($("#login-form").valid(this) == false) {
-                    return false;
-                }
-                var data={
-                    loginName:$("#loginName").val(),
-                    name:$("#name").val(),
-                    password:$("#password").val(),
-                    rpassword:$("#rpassword").val(),
-                    mobile:$("#mobile").val(),
-                    email:$("#email").val()
 
-                }
-                $.ajax({
-                    type: "post",
-                    url: "${base}/reg.sthml",
-                    data: person,
-                    dataType: 'json',
-                    contentType: 'application/json;charset=utf-8',
-                    success: function (data) {
-                        if (data.d == "1") {
-                            $("#hello").text("服务器接收成功！");
-                        }
-                        else {
-                            $("#hello").text("服务器接收数据失败！");
-                        }
-                    },
-                    error: function () {
-                        $("#hello").text("程序运行出错！");
-                    }
-                });
+                var username = $('#username').val();
+                var passwd = $('#password').val();
+                var npasswd = $('#npassword').val();
+                var phone=$('#phone').val();
+                var email=$('#email').val();
+                // var verifyCode = $('.verifyCode').val();
+                if(username == ''){
+                    $.showTips('请输入用户名');
+                }else if(phone == ''){
+                    $.showTips('请输入手机号');
+                }else if(email == ''){
+                    $.showTips('请输入邮箱地址');
+                }else if(passwd == ''){
+                    $.showTips('请输入密码');
+                }else if(npasswd == ''){
+                    $.showTips('请输入确认密码');
+                }else if(npasswd != passwd){
+                    $.showTips('两次密码输入不一致');
+                }else{
+                    $.ajax2({
+                        type: "post",//使用get方法访问后台
+                        dataType: "json",//返回json格式的数据
+                        url: "${base}/reg.shtml",//要访问的后台地址
+                        data: {
+                            loginName:$("#username").val(),
+                            password:$("#password").val(),
+                            email:$("#email").val(),
+                            npassword:npasswd
 
-            })
+                        },//要发送的数据
+                        error: function (data) {
+                            $.showTips(data);
+                        },//AJAX请求完成时隐藏loading提示
+                        success: function (data) {//msg为返回的数据，在这里做数据绑定
+                            $.showTips(data.message);
+                            if(data.code==data.code){
+                                window.location.href=data.data;
+                            }
+
+                        }
+                    });
+                }
+            });
         });
     </script>
 </head>
@@ -157,95 +77,39 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="${base}/index.html" class="page-scroll">首页</a></li>
-                [@navigation_list]
-                [#list navigations as navigation]
-                <li><a href="${navigation.url}" target="_self">${navigation.name}</a></li>
-                [/#list]
-                [/@navigation_list]
+            <@navigation_list>
+                <#list navigations as navigation>
+                    <li><a href="${navigation.url}" target="_self">${navigation.name}</a></li>
+                </#list>
+            </@navigation_list>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
 </nav>
-<div class="box overlay">
-    <div class="login-box">
-        <div class="login-title text-center">
-            <h1>
-                <small>微点登录</small>
-            </h1>
-        </div>
-        <div class="login-content ">
-            <div class="form">
-
-                <div id="messageBox" class="alert alert-error "><button data-dismiss="alert" class="close">×</button>
-                    <label id="loginError" class="error">sss</label>
-                </div>
-                <form action="${base}/reg.sthml" id="login-form" method="post" role="form" >
-                    <div class="form-group">
-                        <div class="col-xs-12  ">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                <input type="text" id="loginName" name="loginName" class="form-control" placeholder="用户名"
-                                       check-type="required" required-message="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12  ">
-                        <div class="input-group">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="昵称"
-                                   check-type="required" required-message="">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-xs-12  ">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                <input type="password" id="password" name="password" class="form-control"
-                                       placeholder="密码" check-type="required" minlength="6" required-message="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-xs-12  ">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                <input type="password" id="rpassword" name="rpassword" class="form-control"
-                                       placeholder="确认密码" check-type="required" minlength="6" required-message="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-xs-12  ">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                                <input type="text" id="mobile" name="mobile" class="form-control"
-                                       placeholder="手机号" check-type="required" minlength="6" required-message="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-xs-12  ">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                                <input type="text" id="email" name="email" class="form-control"
-                                       placeholder="邮箱" check-type="required" minlength="6" required-message="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group form-actions">
-                        <div class="col-xs-4 col-xs-offset-4 ">
-                            <button type="submit" id="login-submit" class="btn btn-primary">立即注册</button>
-                        </div>
-                    </div>
-                 </form>
-            </div>
-        </div>
+<!--SIGN UP-->
+<div class="login-form">
+    <div class=""> </div>
+    <div class="head-info">
+        <label class="lbl-0">用户注册</label>
+        <label class="lbl-1"> </label>
+        <label class="lbl-2"></label>
+    </div>
+    <div class="clear"> </div>
+    <form>
+        <input type="text" class="txt" name="username"  id="username" placeholder="用户名" >
+        <input type="text" class="txt" name="phone"  id="username" placeholder="手机号" >
+        <input type="text" class="txt" name="email"  id="phone" placeholder="邮箱" >
+        <input type="password" class="txt" id="password"   placeholder="密码">
+        <input type="password" class="txt" id="npassword"   placeholder="确认密码">
+    </form>
+    <div class="signin">
+        <input type="button" id="login-submit" value="立即注册" >
     </div>
 </div>
-[#include "/include/footer.ftl" /]
+<div class="copy-rights">
+    <p>Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://www.we-dian.com">we-dian</a></p>
+</div>
+</body>
+</html>

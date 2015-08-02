@@ -24,7 +24,6 @@ import com.wedian.site.modules.cms.entity.ArticleData;
 
 import com.wedian.site.modules.cms.entity.Template;
 import org.apache.commons.io.IOUtils;
-import org.restlet.data.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -18,7 +18,7 @@ import org.springframework.web.servlet.LocaleResolver;
 /**
  * Utils - Spring
  * 
- * @author SHOP++ Team
+ * @author
  * @version 3.0
  */
 @Component("springUtils")
@@ -88,6 +88,7 @@ public final class SpringUtils implements ApplicationContextAware, DisposableBea
 	 * @return 国际化消息
 	 */
 	public static String getMessage(String code, Object... args) {
+        System.out.println(getBean("localeResolver")+"-----------------------------------------");
 		LocaleResolver localeResolver = getBean("localeResolver", LocaleResolver.class);
 		System.out.println("--------------------------"+localeResolver);
 		Locale locale = localeResolver.resolveLocale(null);

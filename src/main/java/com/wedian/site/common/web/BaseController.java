@@ -19,6 +19,7 @@ import com.alibaba.fastjson.JSON;
 import com.wedian.site.common.beanvalidator.BeanValidators;
 import com.wedian.site.common.config.Global;
 import com.wedian.site.common.utils.JedisUtils;
+import com.wedian.site.common.utils.SpringUtils;
 import com.wedian.site.common.utils.StringUtils;
 import com.wedian.site.modules.sys.entity.User;
 import com.wedian.site.modules.sys.utils.UserUtils;
@@ -48,6 +49,7 @@ public abstract class BaseController {
 
     protected  Result result;
 
+    protected static String SUCCESS_CODE="00000";
 	/**
 	 * 日志对象
 	 */
@@ -146,8 +148,21 @@ public abstract class BaseController {
 		}
 		redirectAttributes.addFlashAttribute("message", sb.toString());
 	}
-	
-	/**
+
+    /**
+     * 获取国际化消息
+     *
+     * @param code
+     *            代码
+     * @param args
+     *            参数
+     * @return 国际化消息
+     */
+    protected String message(String code, Object... args) {
+        return SpringUtils.getMessage(code, args);
+    }
+
+    /**
 	 * 客户端返回JSON字符串
 	 * @param response
 	 * @param object
@@ -246,4 +261,14 @@ public abstract class BaseController {
 		return token.getAccess_token();
 	}
 
+    public Result getResult(String code,Object data){
+        result=new Result(code);
+        result.setData(data);
+        return result;
+    }
+
+    public Result getResult(String code){
+        result=new Result(code);
+        return result;
+    }
 }

@@ -20,7 +20,7 @@ public final class CommonAttributes {
 	public static final String SITE_XML_PATH = "/jeesite.xml";
 
 	/** application.properties文件路径 */
-	public static final String SITE_PROPERTIES_PATH = "/jeesite.properties";
+	public static final String SITE_PROPERTIES_PATH = "/site.properties";
 
 	/**
 	 * 不可实例化

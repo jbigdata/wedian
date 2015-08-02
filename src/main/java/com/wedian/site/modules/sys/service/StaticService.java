@@ -10,7 +10,6 @@ import com.wedian.site.common.config.Template;
 import com.wedian.site.modules.cms.entity.Article;
 import com.wedian.site.modules.cms.entity.Article;
 import org.apache.commons.io.IOUtils;
-import org.restlet.data.Product;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -101,21 +100,21 @@ public class StaticService {
 //		}
 		return buildCount;
 	}
-
-	@Transactional(readOnly = true)
-	public int build(Product product) {
-		Assert.notNull(product);
-
-		delete(product);
-		Template template = templateService.get("productContent");
-		int buildCount = 0;
-//		if (product.getIsMarketable()) {
-//			Map<String, Object> model = new HashMap<String, Object>();
-//			model.put("product", product);
-//			buildCount += build(template.getTemplatePath(), product.getPath(), model);
-//		}
-		return buildCount;
-	}
+//
+//	@Transactional(readOnly = true)
+//	public int build(Product product) {
+//		Assert.notNull(product);
+//
+//		delete(product);
+//		Template template = templateService.get("productContent");
+//		int buildCount = 0;
+////		if (product.getIsMarketable()) {
+////			Map<String, Object> model = new HashMap<String, Object>();
+////			model.put("product", product);
+////			buildCount += build(template.getTemplatePath(), product.getPath(), model);
+////		}
+//		return buildCount;
+//	}
 
 	@Transactional(readOnly = true)
 	public int buildIndex() {
@@ -275,13 +274,13 @@ public class StaticService {
 		//article.setPageNumber(null);
 		return deleteCount;
 	}
-
-	@Transactional(readOnly = true)
-	public int delete(Product product) {
-		Assert.notNull(product);
-
-		return 0;//delete(product.getPath());
-	}
+//
+//	@Transactional(readOnly = true)
+//	public int delete(Product product) {
+//		Assert.notNull(product);
+//
+//		return 0;//delete(product.getPath());
+//	}
 
 	@Transactional(readOnly = true)
 	public int deleteIndex() {

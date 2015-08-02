@@ -14,9 +14,6 @@
 	<listener>
 		<listener-class>com.wedian.site.modules.sys.listener.WebContextListener</listener-class>
 	</listener>
-	<listener>
-        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>  
-	</listener>
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -95,10 +92,6 @@
 	<servlet>
 		<servlet-name>RestletServlet</servlet-name>
 		<servlet-class>org.restlet.ext.servlet.ServerServlet</servlet-class>
-		<init-param>
-			<param-name>org.restlet.application</param-name>
-			<param-value>com.wedian.site.modules.act.rest.ActRestApplication</param-value>
-		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>RestletServlet</servlet-name>
@@ -237,7 +230,7 @@
 	
 	<!-- [INSERT FRAGMENT HERE] -->
 
-	<!-- Session configure, to "jeesite.properties" file "session.sessionTimeout" parameter.
+	<!-- Session configure, to "site.properties" file "session.sessionTimeout" parameter.
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>-->

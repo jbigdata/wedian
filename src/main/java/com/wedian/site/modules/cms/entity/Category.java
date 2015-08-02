@@ -325,6 +325,6 @@ public class Category extends TreeEntity<Category> {
 	}
 
    	public String getUrl() {
-        return CmsUtils.getUrlDynamic(this);
+       return CmsUtils.getUrlDynamic(this);
    	}
 }

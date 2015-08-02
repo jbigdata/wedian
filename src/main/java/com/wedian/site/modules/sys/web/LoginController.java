@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wedian.site.common.web.Result;
 import com.wedian.site.modules.sys.security.SystemAuthorizingRealm;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -47,7 +48,7 @@ public class LoginController extends BaseController{
 	/**
 	 * 管理登录
 	 */
-	@RequestMapping(value = "${adminPath}/login", method = RequestMethod.GET)
+//	@RequestMapping(value = "${adminPath}/login", method = RequestMethod.GET)
 	public String login(HttpServletRequest request, HttpServletResponse response, Model model) {
 		SystemAuthorizingRealm.Principal principal = UserUtils.getPrincipal();
 
@@ -84,12 +85,15 @@ public class LoginController extends BaseController{
 	 */
 	@RequestMapping(value = "${adminPath}/login", method = RequestMethod.POST)
     @ResponseBody
-	public String loginFail(HttpServletRequest request, HttpServletResponse response, Model model) {
+	public Object loginFail(HttpServletRequest request, HttpServletResponse response, Model model) {
 		SystemAuthorizingRealm.Principal principal = UserUtils.getPrincipal();
-
+        result=new Result();
+        result.setCode("00000");
+        result.setMessage("登录成功");
 		// 如果已经登录，则跳转到管理首页
 		if(principal != null){
-		//	return "redirect:/"; //+ adminPath;
+            result.setData(FormAuthenticationFilter.DEFAULT_SUCCESS_URL);
+            return result;
 		}
 
 		String username = WebUtils.getCleanParam(request, FormAuthenticationFilter.DEFAULT_USERNAME_PARAM);
@@ -99,6 +103,7 @@ public class LoginController extends BaseController{
 		String message = (String)request.getAttribute(FormAuthenticationFilter.DEFAULT_MESSAGE_PARAM);
 		
 		if (StringUtils.isBlank(message) || StringUtils.equals(message, "null")){
+            result.setCode("10000");
 			message = "用户或密码错误, 请重试.";
 		}
 
@@ -107,7 +112,7 @@ public class LoginController extends BaseController{
 		model.addAttribute(FormAuthenticationFilter.DEFAULT_MOBILE_PARAM, mobile);
 		model.addAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME, exception);
 		model.addAttribute(FormAuthenticationFilter.DEFAULT_MESSAGE_PARAM, message);
-		
+
 //		if (logger.isDebugEnabled()){
 //			logger.debug("login fail, active session size: {}, message: {}, exception: {}",
 //					sessionDAO.getActiveSessions(false).size(), message, exception);
@@ -125,8 +130,12 @@ public class LoginController extends BaseController{
 		if (mobile){
 	        return renderString(response, model);
 		}
-		return "/login.ftl";
+
+		//return "/login.ftl";
 		//return "modules/sys/sysLogin.jsp";
+        result.setMessage(message);
+        result.setData(FormAuthenticationFilter.DEFAULT_SUCCESS_URL);
+       return result;
 	}
 
 	/**

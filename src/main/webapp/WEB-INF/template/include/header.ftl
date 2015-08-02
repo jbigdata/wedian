@@ -30,8 +30,9 @@
 <![endif]-->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <#--<script src="${base}/static/ckfinder/plugins/gallery/colorbox/jquery.min.js"></script>-->
-<script type="text/javascript" src="${base}/static/assets/js/jquery.1.11.1.js"></script>
+<#--<script type="text/javascript" src="${base}/static/assets/js/jquery.1.11.1.js"></script>-->
 <!-- Include all compiled plugins (below), or include individual files as needed -->
+<script type="text/javascript" src="${base}/static/assets/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="${base}/static/assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${base}/static/assets/js/SmoothScroll.js"></script>
 <script type="text/javascript" src="${base}/static/assets/js/jquery.isotope.js"></script>
@@ -59,14 +60,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">${systemName}<br>we-dian.com</a>
+            <a class="navbar-brand" href="index.html">${systemName}</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="${base}/index.html" class="page-scroll">首页</a></li>
                     <@navigation_list>
                     <#list navigations as navigation>
-                    <li><a href="${base}/${navigation.url}" target="_self">${navigation.name}</a></li>
+                    <li><a href="${base}${navigation.url}" target="_self">${navigation.name}</a></li>
                     </#list>
                     </@navigation_list>
         <#if user.id??>

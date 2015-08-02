@@ -35,6 +35,7 @@ public class RegController extends BaseController{
     @Autowired
     private SystemService systemService;
 
+
     @RequestMapping(value="/reg",method = RequestMethod.GET)
     public String regIndex(ModelMap model){
         System.out.println("login----------------------");
@@ -44,34 +45,36 @@ public class RegController extends BaseController{
 
     @RequestMapping(value="/reg",method = RequestMethod.POST)
     @ResponseBody
-    public Object reg(User user, HttpServletRequest request,HttpServletResponse response,ModelMap model, RedirectAttributes redirectAttributes)throws IOException{
+    public Object reg(User user, HttpServletRequest request,HttpServletResponse response,Model model, RedirectAttributes redirectAttributes)throws IOException{
 
-        result=new Result("00000");
+        result=new Result();
+        result.setCode(SUCCESS_CODE);
         result.setMessage("注册成功");
-//        // 修正引用赋值问题，不知道为何，Company和Office引用的一个实例地址，修改了一个，另外一个跟着修改。
-//        //user.setCompany(new Office(request.getParameter("company.id")));
-//        //user.setOffice(new Office(request.getParameter("office.id")));
-//        // 如果新密码为空，则不更换密码
-//        if (StringUtils.isNotBlank(user.getPassword())) {
-//            user.setPassword(SystemService.entryptPassword(user.getPassword()));
-//        }
-////        if (!beanValidator(model, user)){
-////            return form(user, model);
-////        }
-////        if (!"true".equals(checkLoginName(user.getOldLoginName(), user.getLoginName()))){
-////            addMessage(model, "保存用户'" + user.getLoginName() + "'失败，登录名已存在");
-////            return form(user, model);
-////        }
-//        user.setUserType(Global.MEMBER_USER_TYPE);
-//        user.setCreateDate(new Date());
-//        // 保存用户信息
-//        systemService.saveUser(user);
-//        // 清除当前用户缓存
-//        if (user.getLoginName().equals(UserUtils.getUser().getLoginName())){
-//            UserUtils.clearCache();
-//            //UserUtils.getCacheMap().clear();
-//        }
-//        addMessage(redirectAttributes, "用户注册'" + user.getLoginName() + "'成功");
+        // 修正引用赋值问题，不知道为何，Company和Office引用的一个实例地址，修改了一个，另外一个跟着修改。
+        //user.setCompany(new Office(request.getParameter("company.id")));
+        //user.setOffice(new Office(request.getParameter("office.id")));
+        // 如果新密码为空，则不更换密码
+        if (StringUtils.isNotBlank(user.getPassword())) {
+            user.setPassword(SystemService.entryptPassword(user.getPassword()));
+        }
+        if (!beanValidator(model, user)){
+           result.setMessage("注册失败");
+           // return form(user, model);
+        }
+        if (!"true".equals(checkLoginName(user.getOldLoginName(), user.getLoginName()))){
+            result.setMessage( "保存用户'" + user.getLoginName() + "'失败，登录名已存在");
+           // return form(user, model);
+        }
+        user.setUserType(Global.MEMBER_USER_TYPE);
+        user.setCreateDate(new Date());
+        // 保存用户信息
+        systemService.saveUser(user);
+        // 清除当前用户缓存
+        if (user.getLoginName().equals(UserUtils.getUser().getLoginName())){
+            UserUtils.clearCache();
+            //UserUtils.getCacheMap().clear();
+        }
+        result.setMessage("用户注册'" + user.getLoginName() + "'成功");
 //        response.sendRedirect("/");
         return result;
     }

@@ -576,16 +576,3 @@ nav#footer p{
 	border-color: #FCAC45;
 	color: #ffffff;
 }
-
-#load {
-	position: absolute;
-	left: 43%;
-	top: 100px;
-	background: url(../img/loading.gif) no-repeat 50% 50%;
-	width: 159px;
-	color: #999;
-	font-size: 18px;
-	height: 40px;
-	font-weight: 300;
-	padding-top: 14px;
-}

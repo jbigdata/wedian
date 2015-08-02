@@ -10,7 +10,8 @@ public class Result {
     private String code;
     private String message;
     private Object data;
-
+    public Result(){
+    }
     public Result(String code){
         this.code=code;
         this.message= SpringUtils.getMessage(code);
