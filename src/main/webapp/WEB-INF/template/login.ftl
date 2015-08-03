@@ -22,15 +22,16 @@
                     $.showTips('请输入密码');
                 }else{
                     $.ajax2({
-                        type: "post",//使用get方法访问后台
-                        dataType: "json",//返回json格式的数据
-                        url: "${base}/a/login",//要访问的后台地址
+                        type: "POST",//使用get方法访问后台
+                        dataType: "text",
+                        contentType:"application/x-www-form-urlencoded; charset=utf-8",
+                        url: "${base}/a/login.shtml",//要访问的后台地址
                         data: {
                             username:$("#username").val(),
                             password:$("#password").val()
                         },//要发送的数据
                         error: function (data) {
-                            $.showTips(data);
+                            $.showTips("网络超时，请稍后再试");
                         },//AJAX请求完成时隐藏loading提示
                         success: function (data) {//msg为返回的数据，在这里做数据绑定
                             $.showTips(data.message);
@@ -90,7 +91,7 @@
     <form>
         <input type="text" class="text" name="username"  id="username" placeholder="用户名/手机号/邮箱" >
         <div class="key">
-            <input type="password" id="password"   placeholder="密码">
+            <input type="password" id="password"  name="password"  placeholder="密码">
         </div>
     </form>
     <div class="signin">

@@ -16,11 +16,12 @@
 			<value>
 				/static/** = anon
 				/userfiles/** = anon
-				${adminPath}/cas = cas
-				/login = authc
-				${adminPath}/logout = logout
+				${adminPath}/cas* = cas
+				/login* = anon
+				${adminPath}/login* = authc
+				${adminPath}/logout* = logout
 				${adminPath}/** = user
-                /weixin/** =user
+                /weixin/** = user
 				/act/rest/service/editor/** = perms[act:model:edit]
 				/act/rest/service/model/** = perms[act:model:edit]
 				/act/rest/service/** = user
@@ -33,8 +34,8 @@
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" /><!-- 
 		<property name="loginUrl" value="${cas.server.url}?service=${cas.project.url}${adminPath}/cas" /> -->
-		<property name="loginUrl" value="/login" />
-		<property name="successUrl" value="${adminPath}?login" />
+		<property name="loginUrl" value="${adminPath}/login.shtml" />
+		<property name="successUrl" value="/index.shtml" />
 		<property name="filters">
             <map>
                 <entry key="cas" value-ref="casFilter"/>
@@ -48,7 +49,7 @@
 	
 	<!-- CAS认证过滤器 -->  
 	<bean id="casFilter" class="org.apache.shiro.cas.CasFilter">  
-		<property name="failureUrl" value="${adminPath}/login"/>
+		<property name="failureUrl" value="${adminPath}/login.shtml"/>
 	</bean>
 	
 	<!-- 定义Shiro安全管理配置 -->
@@ -67,7 +68,7 @@
 		
 		<!-- 定时清理失效会话, 清理用户直接关闭浏览器造成的孤立会话   -->
 		<property name="sessionValidationInterval" value="${session.sessionTimeoutClean}"/>
-<!--  		<property name="sessionValidationSchedulerEnabled" value="false"/> -->
+        <!-- <property name="sessionValidationSchedulerEnabled" value="false"/> -->
  		<property name="sessionValidationSchedulerEnabled" value="true"/>
  		
 		<property name="sessionIdCookie" ref="sessionIdCookie"/>

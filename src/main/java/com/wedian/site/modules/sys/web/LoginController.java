@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.wedian.site.common.web.Result;
+import com.wedian.site.modules.sys.entity.User;
 import com.wedian.site.modules.sys.security.SystemAuthorizingRealm;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -16,9 +17,7 @@ import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import com.google.common.collect.Maps;
 import com.wedian.site.common.config.Global;
@@ -32,7 +31,6 @@ import com.wedian.site.common.web.BaseController;
 import com.wedian.site.modules.sys.security.FormAuthenticationFilter;
 import com.wedian.site.modules.sys.security.SystemAuthorizingRealm.Principal;
 import com.wedian.site.modules.sys.utils.UserUtils;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 登录Controller
@@ -90,7 +88,6 @@ public class LoginController extends BaseController{
         result=new Result();
         result.setCode("00000");
         result.setMessage("登录成功");
-		// 如果已经登录，则跳转到管理首页
 		if(principal != null){
             result.setData(FormAuthenticationFilter.DEFAULT_SUCCESS_URL);
             return result;
@@ -107,11 +104,11 @@ public class LoginController extends BaseController{
 			message = "用户或密码错误, 请重试.";
 		}
 
-		model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, username);
-		model.addAttribute(FormAuthenticationFilter.DEFAULT_REMEMBER_ME_PARAM, rememberMe);
-		model.addAttribute(FormAuthenticationFilter.DEFAULT_MOBILE_PARAM, mobile);
-		model.addAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME, exception);
-		model.addAttribute(FormAuthenticationFilter.DEFAULT_MESSAGE_PARAM, message);
+//		model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, username);
+//		model.addAttribute(FormAuthenticationFilter.DEFAULT_REMEMBER_ME_PARAM, rememberMe);
+//		model.addAttribute(FormAuthenticationFilter.DEFAULT_MOBILE_PARAM, mobile);
+//		model.addAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME, exception);
+//		model.addAttribute(FormAuthenticationFilter.DEFAULT_MESSAGE_PARAM, message);
 
 //		if (logger.isDebugEnabled()){
 //			logger.debug("login fail, active session size: {}, message: {}, exception: {}",
@@ -133,8 +130,12 @@ public class LoginController extends BaseController{
 
 		//return "/login.ftl";
 		//return "modules/sys/sysLogin.jsp";
-        result.setMessage(message);
-        result.setData(FormAuthenticationFilter.DEFAULT_SUCCESS_URL);
+		if("error".equals(message)) {
+			result.setCode("10001");
+			result.setMessage("用户或密码错误, 请重试.");
+		}else {
+			result.setData(FormAuthenticationFilter.DEFAULT_SUCCESS_URL);
+		}
        return result;
 	}
 
