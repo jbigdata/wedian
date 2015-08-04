@@ -15,28 +15,30 @@
 
                 var username = $('#username').val();
                 var passwd = $('#password').val();
-               // var verifyCode = $('.verifyCode').val();
-                if(username == ''){
+                // var verifyCode = $('.verifyCode').val();
+                if (username == '') {
                     $.showTips('请输入用户名/手机号/邮箱');
-                }else if(passwd == ''){
+                } else if (passwd == '') {
                     $.showTips('请输入密码');
-                }else{
+                } else {
                     $.ajax2({
-                        type: "POST",//使用get方法访问后台
+                        type: "POST",
                         dataType: "text",
-                        contentType:"application/x-www-form-urlencoded; charset=utf-8",
-                        url: "${base}/a/login.shtml",//要访问的后台地址
+                        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                        url: "${base}/a/login.shtml",
                         data: {
-                            username:$("#username").val(),
-                            password:$("#password").val()
-                        },//要发送的数据
+                            username: $("#username").val(),
+                            password: $("#password").val()
+                        },
                         error: function (data) {
                             $.showTips("网络超时，请稍后再试");
-                        },//AJAX请求完成时隐藏loading提示
-                        success: function (data) {//msg为返回的数据，在这里做数据绑定
-                            $.showTips(data.message);
-                            if(data.code==data.code){
-                                window.location.href=data.data;
+                        },
+                        success: function (result) {
+                            alert(result.parseJSON());
+                            var obj = result.parseJSON();//eval(result);
+                            $.showTips(obj.message);
+                            if (obj.code == CODE_SUCCESS) {
+                                window.location.href = obj.data;
                             }
 
                         }
@@ -64,11 +66,11 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="${base}/index.html" class="page-scroll">首页</a></li>
-                <@navigation_list>
+            <@navigation_list>
                 <#list navigations as navigation>
-                <li><a href="${navigation.url}" target="_self">${navigation.name}</a></li>
+                    <li><a href="${navigation.url}" target="_self">${navigation.name}</a></li>
                 </#list>
-                </@navigation_list>
+            </@navigation_list>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -77,29 +79,31 @@
 </nav>
 <!--SIGN UP-->
 <div class="login-form">
-    <div class=""> </div>
+    <div class=""></div>
     <div class="head-info">
         <label class="lbl-0">用户登录</label>
         <label class="lbl-1"> </label>
         <label class="lbl-2"></label>
         <label class="lbl-3"> </label>
     </div>
-    <div class="clear"> </div>
+    <div class="clear"></div>
     <div class="avtar">
-        <img src="${base}/static/assets/img/login/avtar.png" />
+        <img src="${base}/static/assets/img/login/avtar.png"/>
     </div>
     <form>
-        <input type="text" class="text" name="username"  id="username" placeholder="用户名/手机号/邮箱" >
+        <input type="text" class="text" name="username" id="username" placeholder="用户名/手机号/邮箱">
+
         <div class="key">
-            <input type="password" id="password"  name="password"  placeholder="密码">
+            <input type="password" id="password" name="password" placeholder="密码">
         </div>
     </form>
     <div class="signin">
-        <input type="button" id="login-submit" value="登录" >
+        <input type="button" id="login-submit" value="登录">
     </div>
 </div>
 <div class="copy-rights">
-    <p>Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://www.we-dian.com">we-dian</a></p>
+    <p>Copyright &copy; 2015.Company name All rights reserved.<a target="_blank"
+                                                                 href="http://www.we-dian.com">we-dian</a></p>
 </div>
 
 </body>

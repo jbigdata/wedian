@@ -46,20 +46,19 @@ public class LoginController extends BaseController{
 	/**
 	 * 管理登录
 	 */
-//	@RequestMapping(value = "${adminPath}/login", method = RequestMethod.GET)
+	@RequestMapping(value = "${adminPath}/login", method = RequestMethod.GET)
 	public String login(HttpServletRequest request, HttpServletResponse response, Model model) {
 		SystemAuthorizingRealm.Principal principal = UserUtils.getPrincipal();
 
 //		// 默认页签模式
-//		String tabmode = CookieUtils.getCookie(request, "tabmode");
-//		if (tabmode == null){
-//			CookieUtils.setCookie(response, "tabmode", "1");
-//		}
+		String tabmode = CookieUtils.getCookie(request, "tabmode");
+		if (tabmode == null){
+			CookieUtils.setCookie(response, "tabmode", "1");
+		}
 		
 		if (logger.isDebugEnabled()){
 			logger.debug("login, active session size: {}", sessionDAO.getActiveSessions(false).size());
 		}
-		
 		// 如果已登录，再次访问主页，则退出原账号。
 		if (Global.TRUE.equals(Global.getConfig("notAllowRefreshIndex"))){
 			CookieUtils.setCookie(response, "LOGINED", "false");
@@ -67,15 +66,9 @@ public class LoginController extends BaseController{
 		
 		// 如果已经登录，则跳转到管理首页
 		if(principal != null && !principal.isMobileLogin()){
-			return "redirect:" + adminPath;
+			return "index.ftl" ;
 		}
-//		String view;
-//		view = "/WEB-INF/views/modules/sys/sysLogin.jsp";
-//		view = "classpath:";
-//		view += "jar:file:/D:/GitHub/jeesite/src/main/webapp/WEB-INF/lib/jeesite.jar!";
-//		view += "/"+getClass().getName().replaceAll("\\.", "/").replace(getClass().getSimpleName(), "")+"view/sysLogin";
-//		view += ".jsp";
-		return "modules/sys/sysLogin.jsp";
+		return "login.ftl";
 	}
 
 	/**
@@ -134,8 +127,10 @@ public class LoginController extends BaseController{
 			result.setCode("10001");
 			result.setMessage("用户或密码错误, 请重试.");
 		}else {
+			request.getSession().setAttribute("user",UserUtils.getUser());
 			result.setData(FormAuthenticationFilter.DEFAULT_SUCCESS_URL);
 		}
+
        return result;
 	}
 

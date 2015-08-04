@@ -84,7 +84,7 @@
                 </ul>
             </li>
         <#else>
-            <li><a href="${base}/login.shtml"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 登录</a></li>
+            <li><a href="${base}/a/login.shtml"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 登录</a></li>
         </#if>
             </ul>
         </div>
